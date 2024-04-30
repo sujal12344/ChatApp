@@ -11,7 +11,7 @@ export default function TextField({className, getMessage}) {
     <div className={`${className}`}>
       {/* <Emoji />
       <Upload /> */}
-      <Type getMessage={getMessage}/>
+      <Type getMessage={getMessage} />
       {/* <Mice /> */}
     </div>
     </>

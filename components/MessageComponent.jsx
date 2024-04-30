@@ -1,9 +1,16 @@
-import React from 'react';
+import React from "react";
 
-export default function MessageComponent() {
+export default function MessageComponent({ color, msg }) {
   return (
     <>
-      <h1>MessageComponent</h1>
+      <div
+        className={`messageSender ${color} m-[10px] w-fit rounded-md ${
+          msg ? `px-6 py-2` : `p-0`
+        }`}
+        // ref={divRef}
+      >
+        {msg}
+      </div>
     </>
   );
 }
