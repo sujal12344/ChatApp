@@ -6,13 +6,13 @@ export default function Sender({ color, position }) {
   const divRef = useRef(null);
   const [msg, setMsg] = useState("");
 
-  let width;
-  if (window.innerWidth < 768) {
-    width = window.innerWidth - 26 - 48 - 80;
-    console.log(width);
-  } else {
-    width = window.innerWidth / 2 - 220;
-  }
+  let width = 200;
+  // if (window.innerWidth < 768) {
+  //   width = window.innerWidth - 26 - 48 - 80;
+  //   console.log(width);
+  // } else {
+  //   width = window.innerWidth / 2 - 220;
+  // }
   const getMessage = (msg) => {
     msg = msg.trim();
 
