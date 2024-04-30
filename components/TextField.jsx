@@ -4,11 +4,11 @@ import Upload from './Upload';
 import Type from './Type';
 import Mice from './Mice';
 
-export default function TextField({className, getMessage}) {
+export default function TextField({ getMessage}) {
   
   return (
     <>
-    <div className={`${className}`}>
+    <div className={``}>
       {/* <Emoji />
       <Upload /> */}
       <Type getMessage={getMessage} />

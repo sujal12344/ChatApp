@@ -2,23 +2,20 @@ import React, { useEffect, useRef } from "react";
 
 export default function Type({ getMessage }) {
   let finalmsg;
-  let messageWidth;
   
   const message = useRef();
 
   const enterSendMessage = (e) => {
     if (e.keyCode == 13) {
       finalmsg = message.current.value;
-      messageWidth = message.current.offsetWidth;
-      getMessage(finalmsg, messageWidth);
+      getMessage(finalmsg);
       message.current.value = "";
     }
   };
 
   const clickSendMessage = () => {
     finalmsg = message.current.value;
-    messageWidth = message.current.offsetWidth;
-    getMessage(finalmsg, messageWidth);
+    getMessage(finalmsg);
     message.current.value = "";
   };
 
@@ -29,7 +26,7 @@ export default function Type({ getMessage }) {
   return (
     <>
       <div
-        className={`flex justify-between p-2 ml-1 -mb-[10px] gap-[7vw] w-[75vw] md:w-[45vw] bg-[#181a25] rounded-2xl`}
+        className={`flex justify-between p-2 ml-2 -mb-[10px] gap-[7vw] w-[75vw] md:w-[45vw] bg-[#181a25] rounded-2xl`}
       >
         <div className="items-start">
           <input
