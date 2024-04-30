@@ -1,10 +1,8 @@
-import React, { createContext, useContext, useRef, useState } from "react";
-import Profile from "./Profile";
-import MessageComponent from "./MessageComponent";
+import React, { useRef, useState } from "react";
 import TextField from "./TextField";
 import gsap from "gsap";
 
-export default function Receiver({ color }) {
+export default function Sender({ color, position }) {
   const divRef = useRef(null);
   const [msg, setMsg] = useState("");
 
@@ -42,7 +40,7 @@ export default function Receiver({ color }) {
             {msg}
           </div>
 
-          <div className="absolute bottom-[50%] left-[25px]">
+          <div className={`absolute ${position} left-[25px]`}>
             <TextField className="" getMessage={getMessage} />
           </div>
         </div>
