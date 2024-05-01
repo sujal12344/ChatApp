@@ -13,7 +13,7 @@ export default function ChatFrame({ color }) {
     gsap.from(".messageReceive", {
       opacity: 0.1,
       duration: 1.8,
-      x: innerWidth - 176,
+      x: (innerWidth/2 - 60),
     });
     setMsg(msg);
   };
@@ -24,7 +24,7 @@ export default function ChatFrame({ color }) {
     gsap.from(".messageSend", {
       opacity: 0.1,
       duration: 1.8,
-      x: -(innerWidth - 176),
+      x: -(innerWidth/2 - 60),
     });
     setMsg(msg);
   };
@@ -36,7 +36,7 @@ export default function ChatFrame({ color }) {
         className={`flex flex-col justify-between absolute`}
       >
         <div className="flex flex-col justify-between">
-          <MessageComponent color={color} msg={msg} isMessageReceive={true} />
+          {/* <MessageComponent color={color} msg={msg} isMessageReceive={true} /> */}
           <MessageComponent color={color} msg={msg} isMessageReceive={false} />
         </div>
 
