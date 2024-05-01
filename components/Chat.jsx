@@ -1,13 +1,13 @@
 import ChatFrame from "./ChatFrame";
 
-export default function Chat({ color }) {
+export default function Chat({ className, mainColor, primaryColor, secondaryColor }) {
   return (
     <>
       <div
-        style={{ height: innerHeight / 2 - 18, borderColor: color }}
-        className={`md:col-span-1 row-span-1 border-4 border-solid rounded-2xl bg-[#20272b]`}
+        style={{ minHeight: innerHeight / 2 - 18, maxHeight: `fit-content`, borderColor: mainColor }}
+        className={`md:col-span-1 row-span-1 border-4 border-solid rounded-2xl bg-black`}
       >
-        <ChatFrame color={color} />
+        <ChatFrame primaryColor={primaryColor} secondaryColor={secondaryColor} className={className}/>
       </div>
     </>
   );
