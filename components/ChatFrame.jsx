@@ -39,21 +39,23 @@ export default function ChatFrame({ className, primaryColor, secondaryColor }) {
       opacity: 0.1,
       duration: 1.8,
       x: innerWidth / 2,
+      scrub: 5,
     });
-
+    
     setMessages((prevMessages) => [
       ...prevMessages,
       { msg, isMessageReceive: true },
     ]);
   };
-
+  
   const sendMessage = (msg) => {
     msg = msg.trim();
-
+    
     gsap.from(".messageSend", {
       opacity: 0.1,
       duration: 1.8,
       x: -(innerWidth / 2),
+      scrub: 5,
     });
 
     setMessages((prevMessages) => [
