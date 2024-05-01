@@ -1,21 +1,20 @@
-import React, { useRef } from "react";
-
-export default function MessageComponent({ color, msg, getWidth }) {
-  const divRef = useRef(0)
-  let lastmW = divRef.current.offsetWidth;
-  console.log("lastmW", lastmW);
-  getWidth(lastmW);
+export default function MessageComponent({ color, msg, isMessageReceive }) {
   return (
     <>
       <div
-        style={{ background: color}}
-        className={`messageSender relative m-[10px] w-fit rounded-md ${
-          msg ? `px-6 py-2` : `p-0`
+        className={`${
+          isMessageReceive ? `flex justify-start` : `flex justify-end w-[92vw]`
         }`}
-        ref={divRef}
       >
-        {msg}
-        {lastmW}
+        <div
+          style={{ background: color }}
+          className={`${
+            isMessageReceive ? `messageReceive` : `messageSend`
+          } relative m-[10px] w-fit rounded-md ${msg ? `px-6 py-2` : `p-0`}
+        `}
+        >
+          {msg}
+        </div>
       </div>
     </>
   );

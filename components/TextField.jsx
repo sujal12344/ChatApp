@@ -4,14 +4,14 @@ import Upload from './Upload';
 import Type from './Type';
 import Mice from './Mice';
 
-export default function TextField({ getMessage}) {
+export default function TextField({ receiveMessage, sendMessage}) {
   
   return (
     <>
     <div className={``}>
       {/* <Emoji />
       <Upload /> */}
-      <Type getMessage={getMessage} />
+      <Type receiveMessage={receiveMessage} sendMessage={sendMessage}/>
       {/* <Mice /> */}
     </div>
     </>

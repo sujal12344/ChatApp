@@ -1,21 +1,23 @@
 import React, { useEffect, useRef } from "react";
 
-export default function Type({ getMessage }) {
+export default function Type({ receiveMessage , sendMessage}) {
   let finalmsg;
-  
+
   const message = useRef();
 
   const enterSendMessage = (e) => {
     if (e.keyCode == 13) {
       finalmsg = message.current.value;
-      getMessage(finalmsg);
+      receiveMessage(finalmsg);
+      sendMessage(finalmsg);
       message.current.value = "";
     }
   };
 
   const clickSendMessage = () => {
     finalmsg = message.current.value;
-    getMessage(finalmsg);
+    receiveMessage(finalmsg);
+    sendMessage(finalmsg);
     message.current.value = "";
   };
 
