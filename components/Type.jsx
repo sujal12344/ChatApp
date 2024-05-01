@@ -8,7 +8,7 @@ export default function Type({ receiveMessage , sendMessage}) {
   const enterSendMessage = (e) => {
     if (e.keyCode == 13) {
       finalmsg = message.current.value;
-      receiveMessage(finalmsg);
+      // receiveMessage(finalmsg);
       sendMessage(finalmsg);
       message.current.value = "";
     }
@@ -16,7 +16,7 @@ export default function Type({ receiveMessage , sendMessage}) {
 
   const clickSendMessage = () => {
     finalmsg = message.current.value;
-    receiveMessage(finalmsg);
+    // receiveMessage(finalmsg);
     sendMessage(finalmsg);
     message.current.value = "";
   };
