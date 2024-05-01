@@ -6,9 +6,11 @@ import MessageComponent from "./MessageComponent";
 export default function ChatFrame({ color }) {
   const [msg, setMsg] = useState("");
 
+  let isMessageReceive;
 
   const receiveMessage = (msg) => {
     msg = msg.trim();
+    isMessageReceive = true;
 
     gsap.from(".messageReceive", {
       opacity: 0.1,
@@ -20,6 +22,7 @@ export default function ChatFrame({ color }) {
 
   const sendMessage = (msg) => {
     msg = msg.trim();
+    isMessageReceive = false;
 
     gsap.from(".messageSend", {
       opacity: 0.1,
@@ -35,9 +38,8 @@ export default function ChatFrame({ color }) {
         style={{ height: innerHeight / 2 - 50 }}
         className={`flex flex-col justify-between absolute`}
       >
-        <div className="flex flex-col justify-between">
-          {/* <MessageComponent color={color} msg={msg} isMessageReceive={true} /> */}
-          <MessageComponent color={color} msg={msg} isMessageReceive={false} />
+        <div className="flex flex-col justify-between"> 
+          <MessageComponent color={color} msg={msg} isMessageReceive={isMessageReceive} className={""}/> 
         </div>
 
         <div>
