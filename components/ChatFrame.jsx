@@ -3,7 +3,12 @@ import TextField from "./TextField";
 import gsap from "gsap";
 import MessageComponent from "./MessageComponent";
 
-export default function ChatFrame({ className, primaryColor, secondaryColor }) {
+export default function ChatFrame({
+  className,
+  id,
+  primaryColor,
+  secondaryColor,
+}) {
   const [messages, setMessages] = useState([]);
   let msgArray = [];
   const OppositeScreen = (msg) => {
@@ -32,6 +37,10 @@ export default function ChatFrame({ className, primaryColor, secondaryColor }) {
     }
   };
 
+  const OpponentScreen = (msg, id) => {
+    // console.log(msg, id);
+    // receiveMessage(msg);
+  };
   const receiveMessage = (msg) => {
     msg = msg.trim();
 
@@ -41,16 +50,22 @@ export default function ChatFrame({ className, primaryColor, secondaryColor }) {
       x: innerWidth / 2,
       scrub: 5,
     });
-    
+    gsap.from(".able_to_move", {
+      opacity: 0.1,
+      duration: 1.8,
+      x: innerWidth / 2,
+      scrub: 5,
+    });
+
     setMessages((prevMessages) => [
       ...prevMessages,
       { msg, isMessageReceive: true },
     ]);
   };
-  
+
   const sendMessage = (msg) => {
     msg = msg.trim();
-    
+
     gsap.from(".messageSend", {
       opacity: 0.1,
       duration: 1.8,
@@ -62,9 +77,8 @@ export default function ChatFrame({ className, primaryColor, secondaryColor }) {
       ...prevMessages,
       { msg, isMessageReceive: false },
     ]);
-    console.log(msg);
     OppositeScreen(msg);
-    console.log(msg);
+    OpponentScreen(msg, id);
   };
 
   return (
@@ -82,11 +96,11 @@ export default function ChatFrame({ className, primaryColor, secondaryColor }) {
               msg={message.msg}
               isMessageReceive={message.isMessageReceive}
               className={
-                i === arr.length - 1
-                  ? message.isMessageReceive
+                `${i === arr.length - 1
+                  ? (message.isMessageReceive
                     ? "messageReceive"
-                    : "messageSend"
-                  : ""
+                    : "messageSend")
+                  : ""} ${className}`
               }
             />
           ))}
