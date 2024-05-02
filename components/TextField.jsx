@@ -8,7 +8,7 @@ export default function TextField({ receiveMessage, sendMessage}) {
   
   return (
     <>
-    <div className={``}>
+    <div className={`w-full`}>
       {/* <Emoji />
       <Upload /> */}
       <Type receiveMessage={receiveMessage} sendMessage={sendMessage}/>

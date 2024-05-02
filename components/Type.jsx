@@ -28,9 +28,9 @@ export default function Type({ receiveMessage , sendMessage}) {
   return (
     <>
       <div
-        className={`flex justify-between p-2 ml-2 -mb-[10px] gap-[7vw] w-[75vw] md:w-[45vw] bg-[#181a25] rounded-2xl`}
+        className={`flex justify-between mt-8 p-2 ml-2 -mb-[10px] w-[87vw] md:w-[45vw] bg-[#181a25] rounded-2xl`}
       >
-        <div className="items-start">
+        <div className="flex items-start">
           <input
             type="text"
             placeholder="Enter your message"
@@ -40,9 +40,9 @@ export default function Type({ receiveMessage , sendMessage}) {
           />
         </div>
 
-        <div className="items-end">
+        <div className="flex items-end">
           <div
-            className="scale-[2.5] md:scale-[3.5] cursor-pointer relative -top-2"
+            className="scale-[2.5] md:scale-[3.5] cursor-pointer relative -top-[20px] -ml-[20px]"
             onClick={() => clickSendMessage()}
           >
             <button className="h-3 w-3 bg-black dark:bg-white rounded-sm"></button>
