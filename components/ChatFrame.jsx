@@ -70,7 +70,7 @@ export default function ChatFrame({ className, primaryColor, secondaryColor }) {
   return (
     <>
       <div
-        style={{ height: innerHeight / 2 - 30 }}
+        style={{ height: innerHeight / 2 - 40 }}
         className={`flex flex-col justify-between absolute overflow-auto scrollbar-hide`}
       >
         <div className="flex flex-col justify-between">
