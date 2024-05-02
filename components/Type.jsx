@@ -42,7 +42,7 @@ export default function Type({ receiveMessage , sendMessage}) {
 
         <div className="flex items-end">
           <div
-            className="scale-[2.5] md:scale-[3.5] cursor-pointer relative -ml-[20px]"
+            className="scale-[2.5] md:scale-[3.5] cursor-pointer relative -top-[8px] -ml-[20px]"
             onClick={() => clickSendMessage()}
           >
             <button className="h-3 w-3 bg-black dark:bg-white rounded-sm"></button>
