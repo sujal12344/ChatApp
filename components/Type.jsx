@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
 
-export default function Type({ receiveMessage , sendMessage}) {
+export default function Type({ receiveMessage, sendMessage }) {
   let finalmsg;
+  let number = 5;
 
   const message = useRef();
 
@@ -9,7 +10,7 @@ export default function Type({ receiveMessage , sendMessage}) {
     if (e.keyCode == 13) {
       finalmsg = message.current.value;
       // receiveMessage(finalmsg);
-      sendMessage(finalmsg);
+      sendMessage(finalmsg, number);
       message.current.value = "";
     }
   };
@@ -17,7 +18,7 @@ export default function Type({ receiveMessage , sendMessage}) {
   const clickSendMessage = () => {
     finalmsg = message.current.value;
     // receiveMessage(finalmsg);
-    sendMessage(finalmsg);
+    sendMessage(finalmsg, number);
     message.current.value = "";
   };
 
@@ -40,13 +41,11 @@ export default function Type({ receiveMessage , sendMessage}) {
           />
         </div>
 
-       
-          <div
-            className="scale-[2.5] md:scale-[3.5] cursor-pointer flex items-center"
-            onClick={() => clickSendMessage()}
-          >
-            <button className="h-3 w-3 bg-black dark:bg-white rounded-[3px] mr-2"></button>
-      
+        <div
+          className="scale-[2.5] md:scale-[3.5] cursor-pointer flex items-center"
+          onClick={() => clickSendMessage()}
+        >
+          <button className="h-3 w-3 bg-black dark:bg-white rounded-[3px] mr-2"></button>
         </div>
       </div>
     </>

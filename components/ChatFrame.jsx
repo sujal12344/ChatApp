@@ -2,60 +2,67 @@ import React, { useState } from "react";
 import TextField from "./TextField";
 import gsap from "gsap";
 import MessageComponent from "./MessageComponent";
+import { useGSAP } from "@gsap/react";
 
 export default function ChatFrame({
-  className,
-  id,
+  setPassValue,
+  value,
+  code,
   primaryColor,
   secondaryColor,
+  className,
 }) {
   const [messages, setMessages] = useState([]);
   let msgArray = [];
   const OppositeScreen = (msg) => {
-    msgArray = [`Hello`, `Hi`, `hello`, `hi`];
+    console.log("value", value);
+    if (value && code === value) {
+      msgArray = [`Hello`, `Hi`, `hello`, `hi`];
 
-    if (msg === "Hello" || msg === "hello") {
-      receiveMessage("Hi");
-    } else if (msg === "Hi" || msg === "hi") {
-      receiveMessage("Hello");
-    } else if (msg === "how are you") {
-      receiveMessage("I am fine, and you?");
-    } else if (msg === "i am fine") {
-      receiveMessage("That's great to hear.");
-    } else if (msg === "what is your name") {
-      receiveMessage("I am a chatbot.");
-    } else if (msg === "what is your age") {
-      receiveMessage("I am a chatbot, I don't have age.");
-    } else if (msg === "tell me something about you") {
-      receiveMessage("I am a chatbot");
-    }
-    // code for all upper case and lower case for example user type "Hello", "hello", "heLLo" and "HEllO" they should be same and chatbot should reply accordingly.
-    else if (msg === "") {
-      receiveMessage("Please type something.");
-    } else if (msg !== "") {
-      receiveMessage("I am a chatbot, I am here to help you.");
+      if (msg === "Hello" || msg === "hello") {
+        receiveMessage("Hi");
+      } else if (msg === "Hi" || msg === "hi") {
+        receiveMessage("Hello");
+      } else if (msg === "how are you") {
+        receiveMessage("I am fine, and you?");
+      } else if (msg === "i am fine") {
+        receiveMessage("That's great to hear.");
+      } else if (msg === "what is your name") {
+        receiveMessage("I am a chatbot.");
+      } else if (msg === "what is your age") {
+        receiveMessage("I am a chatbot, I don't have age.");
+      } else if (msg === "tell me something about you") {
+        receiveMessage("I am a chatbot");
+      } else if (msg === "") {
+        receiveMessage("Please type something.");
+      } else if (msg !== "") {
+        receiveMessage("I am a chatbot, I am here to help you.");
+      }
     }
   };
 
-  const OpponentScreen = (msg, id) => {
-    // console.log(msg, id);
-    // receiveMessage(msg);
-  };
   const receiveMessage = (msg) => {
     msg = msg.trim();
 
-    gsap.from(".messageReceive", {
-      opacity: 0.1,
-      duration: 1.8,
-      x: innerWidth / 2,
-      scrub: 5,
-    });
-    gsap.from(".able_to_move", {
-      opacity: 0.1,
-      duration: 1.8,
-      x: innerWidth / 2,
-      scrub: 5,
-    });
+    useGSAP(() => {
+      gsap.from(".messageReceive", {
+        opacity: 0,
+        scale: 0,
+        duration: 0.8,
+        delay: 0.1,
+        x: innerWidth / 2,
+        scrub: 5,
+        ease: "bounce",
+        borderRadius: "0",
+      });
+
+      gsap.from(".able_to_move", {
+        opacity: 0.1,
+        duration: 0.8,
+        x: innerWidth / 2,
+        scrub: 5,
+      });
+    }, {scope: MessageComponent, dependencies: [msg]});
 
     setMessages((prevMessages) => [
       ...prevMessages,
@@ -63,14 +70,20 @@ export default function ChatFrame({
     ]);
   };
 
-  const sendMessage = (msg) => {
+  const sendMessage = (msg, number) => {
     msg = msg.trim();
 
+    setPassValue(number);
+
     gsap.from(".messageSend", {
-      opacity: 0.1,
-      duration: 1.8,
+      opacity: 0,
+      scale: 0,
+      duration: 0.8,
+      delay: 0.1,
       x: -(innerWidth / 2),
       scrub: 5,
+      ease: "bounce",
+      borderRadius: "0",
     });
 
     setMessages((prevMessages) => [
@@ -78,7 +91,6 @@ export default function ChatFrame({
       { msg, isMessageReceive: false },
     ]);
     OppositeScreen(msg);
-    OpponentScreen(msg, id);
   };
 
   return (
@@ -95,13 +107,13 @@ export default function ChatFrame({
               secondaryColor={secondaryColor}
               msg={message.msg}
               isMessageReceive={message.isMessageReceive}
-              className={
-                `${i === arr.length - 1
-                  ? (message.isMessageReceive
+              className={`${
+                i === arr.length - 1
+                  ? message.isMessageReceive
                     ? "messageReceive"
-                    : "messageSend")
-                  : ""} ${className}`
-              }
+                    : "messageSend"
+                  : ""
+              }  ${className}`}
             />
           ))}
         </div>
