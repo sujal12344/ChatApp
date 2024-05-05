@@ -35,7 +35,7 @@ export default function Type({ receiveMessage, sendMessage }) {
           <input
             type="text"
             placeholder="Enter your message"
-            className="rounded-md bg-transparent text-white w-[72vw] md:w-[43vw] h-9"
+            className="outline-none rounded-md bg-transparent text-white w-[72vw] md:w-[43vw] h-9"
             ref={message}
             onKeyDown={(e) => enterSendMessage(e)}
           />
