@@ -114,7 +114,7 @@ export default function ChatFrame({
 
         <div>
           <TextField
-            className=""
+            className="fixed"
             // receiveMessage={receiveMessage}
             sendMessage={sendMessage}
           />
